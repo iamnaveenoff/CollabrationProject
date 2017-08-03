@@ -1,0 +1,38 @@
+<div class="center-align" style="margin-top: 50px;">
+	<h4>You are now Chatting with {{chatCtrl.chatter}}!</h4>
+</div>
+
+<div class="container">
+
+	<form id="chat-box" name="chat-box" ng-submit="chatCtrl.addMessage()">
+		
+		<!-- Type Message here  -->
+		<div  class="row">
+			<div class="input-field col s9">
+				<input id="message" type="text" ng-model="chatCtrl.message">
+				<label for="message">Type a Message here......</label>
+			</div>
+			
+			<!-- Send Message Button here -->
+			 <div class="col s3 right-align">
+		 		<button type="submit" ng-disabled="register.$invalid" class="waves-effect waves-light btn-large" style="margin-bottom: 20px;"><i class="material-icons right">send</i>Send</button>
+			 </div>		
+		</div>
+		 
+		 
+		 
+		 <!-- Displaying the messages here -->
+		 <div class=" card hoverable col s5" style="margin-bottom: 50px; border: 0.5px solid #000;">
+		 	<div class="chat-display" style="padding-left: 25px;">
+		 		<p>
+		 			<div ng-repeat="message in chatCtrl.messages | orderBy : 'time'">
+			 			<b>{{message.time | date : 'MMMM, d y - HH:mm'}}</b>
+			 			<p style="margin-left: 50px; color: blue;">{{message.message}}</p>
+			 		</div>
+		 		</p>
+		 	</div>
+		 </div>
+		 
+	</form>
+
+</div>

@@ -1,0 +1,55 @@
+<div class="row" ng-init="adminCtrl.manageJobs()">
+
+	<div style="margin-top: 25px; margin-left: 25px;">
+		<h4 align="center">Manage Job Here</h4>
+	</div>
+	
+	<br><hr>
+	
+	<div style="margin-left:25px; margin-bottom: 250px;">
+		<div class="card hoverable" style="width: 1300px;" ng-repeat="job in adminCtrl.approvedJobList">
+			<div class="row">
+				<!-- Job Information come here -->
+				<div class="col m9">
+					<div class="card-content">
+						<h5><a href="#!/job/{{job.id}}" target="_blank">{{job.companyName}}</a></h5>
+						<h6>{{job.subTitle}}</h6>
+						<b>About The Company</b>
+						<p>{{job.about}}</p>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col m4">
+							<b>JOB PROFILE:</b>
+							<p>{{job.jobProfile}}</p>
+						</div>
+						<div class="col m4">
+							<b>QUALIFICATION:</b>
+							<p>{{job.qualification}}</p>
+						</div>
+						<div class="col m4">
+							<b>CONTACT INFO:</b>
+							<p>{{job.contactInfo}}</p>
+						</div>
+					</div>
+					
+				</div>
+				<!-- Job Information End Here -->
+				
+				<!-- Employer Information Starts from here -->
+				<div class="col m3">
+					<div style="padding-top: 50px;">
+						<b>Employer Name:</b> &nbsp; &nbsp; {{job.username}}
+						<b>Published On:</b> &nbsp; &nbsp; {{job.postDate | date : 'MMMM d, y'}}
+						<div class="center-align" style="margin-top: 10px;">
+							<button type="submit" class="waves-effect waves-light btn-large green"><i class="material-icons">mode_edit</i>EDIT</button>
+							<button type="submit" ng-click="jobCtrl.deleteJob(job.id)" class="waves-effect waves-light btn-large red"><i class="material-icons">delete</i>DELETE</button>
+						</div>
+					</div>
+				</div>
+				<!-- Employee Information End here -->
+			</div>
+		</div>	
+	</div>
+	
+</div>

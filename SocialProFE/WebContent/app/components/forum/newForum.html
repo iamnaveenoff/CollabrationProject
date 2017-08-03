@@ -1,0 +1,39 @@
+<div style="margin-top: 50px; padding-left: 50px; margin-bottom: 50px;">
+	<div class="row">
+		<div class="col s8 offset-s2 card hoverable">
+			<h3>Create Forum</h3>
+			<hr>
+			
+			<div class="row">
+				<form id="newForum" name="newForum" class="col s12" ng-submit="forCtrl.addForum()"  style="padding-bottom: 40px;">
+ 						
+ 						<!-- Forum Id Hidden  because it is  auto generated-->
+ 						<input type="hidden" ng-model="forCtrl.Forum.id"/>
+ 						
+ 						<!--Forum category name will be come here  -->
+ 						<div class="row">
+ 							<div class="input-field col s12">
+ 								<input id="name" type="text" class="validate" data-length="50" ng-model="forCtrl.Forum.name" />
+ 								<label for="name">Forum Name</label>
+ 							</div>
+ 						</div>
+ 						
+ 						<!-- Forum Category description will be come here -->
+ 						<div class="row">
+ 							<div class="input-field col s12">
+ 								<textarea id="description" class="materialize-textarea" ng-model="forCtrl.Forum.description"></textarea>
+ 								<label for="description">Forum Description</label>
+ 							</div>
+ 						</div>
+ 						
+ 						<!-- Submit Button will be come Here -->
+ 						<div class="row"> 
+ 							<button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 10px;">Create</button>
+ 						</div>
+ 						
+ 					</form>	
+			</div>
+			
+		</div>
+	</div>
+</div>

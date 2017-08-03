@@ -1,0 +1,43 @@
+<div class="row" ng-init="eventCtrl.eventlist()">
+	<div class="col m9" style="margin-bottom: 75px;">
+		
+		<div class="col s12" style="margin-top: 25px;">
+			<a href="#!/user" class="breadcrumb">Home</a>
+			<a href="#!/events/list" class="breadcrumb">Event List</a>
+		</div>
+		
+		<div style="margin-top: 100px;">
+			<div class="card hoverable" style="width: inherit;" ng-repeat="event in eventCtrl.eventlist">
+				<div class="card-content">
+					<span class="card-title activator"><a href="#!/event/{{event.id}}" style="color: rgba(0,0,0,0.87)">{{event.name}}</a></span>
+					<p style="font-size: 13px;">Organised By: {{event.userName}} | {{event.postDate | date : 'MMMM d,y'}}</p><br>
+					<p>{{event.description}}</p>
+					<a class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="JOIN EVENT" ><i class="material-icons">add</i></a>
+					<br>
+					<div class="row">
+						<div class="col m6">
+							<p><b>Venue:</b></p>
+							<p>{{event.venue}}</p>
+						</div>
+						<div class="col m6">
+							<p><b>Start Date:</b>{{event.startDate | date : 'MMMM d, y'}}</p>
+							<p><b>End Date:</b>{{event.endDate | date : 'MMMM d, y'}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="col m3" style="margin-bottom: 75px;">
+		
+		<div ng-include="'app/shared/rightSide.html'"></div>
+		
+		<div style="margin: 25px auto 0 auto;" ng-if="user.role != 'User' ">
+			<a href="#!/event/new" class="waves-effect waves-light btn-large"><i class="material-icons right">today</i>CREATE EVENT</a>
+		</div>
+		
+	</div>
+	
+</div>

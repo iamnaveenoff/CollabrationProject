@@ -1,0 +1,86 @@
+<div class="row" ng-init="jobCtrl.viewJob()">
+	<div class="col m9" style="margin-bottom: 75px;">
+		
+		<div class="col s12" style="margin-top: 25px;">
+			<a href="#!/user" class="breadcrumb">Home</a>
+			<a href="#!/jobs/list" class="breadcrumb">Job List</a>
+			<a href="#!/job/topic" class="breadcrumb">Job</a>
+		</div>
+		
+		<div class="card hoverable" style="margin-top: 75px;">
+			<div style="padding-top: 40px; padding-bottom: 40px;">
+				<div class="row">
+					
+					<div class="col m3" style="margin-top: 20px;">
+						<img alt="" src="assets/images/{{jobCtrl.singleJobUser.profile}}" class="circle" width="150px;">
+						<p><b>Posted By:</b>{{jobCtrl.singleJob.userName}}</p>
+					</div>
+					
+					<div class="col m9">
+						<div class="row">
+							<div class="col m8">
+								<h4>{{jobCtrl.singleJob.companyName}}</h4>
+							</div>
+							
+							<div class="col m4" ng-if="((user.id != jobCtrl.singleJob.userId) && !jobCtrl.isApplied)">
+								<a class="waves-effect waves-light btn" ng-click="jobCtrl.applyJob()">
+								<i class="material-icons">add</i>APPLY</a>								
+							</div>
+						</div>
+						<h6>{{jobCtrl.singleJob.subTitle}}</h6>
+						<b>About The Company</b>
+						<p>{{jobCtrl.singleJob.about}}</p>
+						<div class="row">
+							<div class="col m4">
+								<b>JOB PROFILE:</b>
+								<p>{{jobCtrl.singleJob.jobProfile}}</p>
+							</div>
+							<div class="col m4">
+								<b>QUALIFICATION:</b>
+								<p>{{jobCtrl.singleJob.qualification}}</p>
+							</div>
+							<div class="col m4">
+								<b>CONTACT INFO:</b>
+								<p>{{jobCtrl.singleJob.contactInfo}}</p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<!--  if User id not Applied for Job -->
+		<div ng-if="(!jobCtrl.isApplied) &&  (user.id != jobCtrl.singleJob.userId)">
+			<div class="card hoverable" style="background-color: #ff0000;">
+				<marquee>
+					<span style="color: #fff; padding-left: 25px;">You are not Applied of this Job!</span>
+				</marquee>	
+			</div>
+		</div>
+		
+		<!-- If User is Applied -->
+		<div ng-if="(jobCtrl.isApplied) && jobCtrl.appliedUserStatus == 'APPROVED'">
+			<div class="card hoverable" style="background-color: #ff0000;">
+				<marquee>
+					<span style="color: #fff; padding-left: 25px;">
+						<!-- Your request to join the Event submitted successfully and waiting response from admin after approval. -->
+						Welcome,You are Applied for This Job! 
+					</span>
+				</marquee>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="col m3" style="margin-bottom: 75px;">
+		
+		<div ng-include="'app/shared/rightSide.html'"></div>
+		
+		<div style="margin: 25px auto 0 auto;" ng-if="user.role != 'User' ">
+			<a href="#!/job/new" class="waves-effect waves-light btn-large"><i class="material-icons right">today</i>CREATE JOB</a>
+		</div>
+		
+	</div>
+	
+</div>

@@ -1,0 +1,221 @@
+<!-- Navbar for Login Start from here -->
+
+<div>
+	<div class="navbar-fixed">
+	<nav>
+		<div class="nav-wrapper MAROON">
+			<a href="#" class="brand-logo">Social Pro</a>
+		</div>
+	</nav>
+	</div>
+
+<!-- Login Form Start from here -->
+
+<div class="row" style="margin-top: 20px;" align="center">
+	<div class="col s6">
+		<div class="card-panel hoverable" style="width: 500px; margin-top: 100px; margin-left: 50px;">
+		
+			<form id="login" ng-submit="authCtrl.login()">
+				<div class="center-align">
+					<h4 style="color: MAROON">Login</h4>
+				</div>
+				
+				<div class="row">
+        		 	 <div class="input-field">
+            			<img src="assets/images/login.png" alt="" class="responsive-img valign profile-image-login" height="100" width="100">
+         			 </div>
+       		 	</div>
+				
+				<!-- Enter UserName  -->
+				<div class="row">
+					<div class="input-field">
+						<input id="username" name="username" type="text" ng-model="authCtrl.credentials.username" />
+						<label for="username">Username</label>
+					</div>
+				</div>
+				
+				<!-- Enter Password  -->
+				<div class="row">
+					<div class="input-field">
+						<input id="password" name="password" type="password" ng-model="authCtrl.credentials.password" />
+						<label for="username">Password</label>
+					</div>
+				</div>
+				
+				<!-- Login Button -->
+				<div class="row">
+					<div class="input-field center-align">
+						<button class="btn MAROON" type="submit">Login<i class="material-icons right">send</i></button>
+					</div>
+				</div>
+				
+				<!--  <div class="row">
+         			 <div class="input-field">
+           				 <p class="margin medium-small"><a href="app/components/authentication/register.html"><span style="color: MAROON">Register Now!</span></a></p>
+          			</div>
+          		</div>-->
+				
+				<!-- Error Message will display here -->
+				<div style="margin-top: 15px;" class="center-align" ng-show="authCtrl.error">
+					<span class="help-block"> {{message}} </span>
+				</div>
+				
+			</form>
+			
+		</div>
+	</div>
+	
+	
+	<div class="col s6">
+
+<!-- Registration Form Start from here -->
+	<div id="panel" class="card-panel hoverable">
+	
+		<form id="register" name="register" ng-submit="authCtrl.register() && register.$valid" novalidate>
+				<div class="center-align">
+					<h4 style="color: MAROON">Sign Up</h4>
+				</div>
+		
+		<!-- Auto generated User Id that's why id field is hidden -->
+			<input type="hidden" ng-model="authCtrl.client.id" />
+		<div style="margin-left: 25px">
+			
+		<!-- User name will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="reg_username" name="reg_username" type="text" class="validate" ng-minlength="3" ng-maxlength="12" ng-model="authCtrl.client.username" data-length="12" ng-blur="authCtrl.checkUsername()" ng-required="true" />
+					<label for="reg_username">Username</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="authCtrl.usernameExist" class="help-block">Username is already Taken.</span>
+						<span ng-show="register.reg_username.$error.required && !register.reg_username.$pristine" class="help-block">Username is Mandatory.</span>
+						<span ng-show="register.reg_username.$error.minlength" class="help-block">Username must be of at least 3 character</span>
+						<span ng-show="register.reg_username.$error.maxlength" class="help-block">Username is too long</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- First name will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="first_name" name="first_name" type="text" class="validate" ng-minlength="3" ng-maxlength="25" ng-model="authCtrl.client.firstName" data-length="25" ng-required="true" />
+					<label for="first_name">First Name</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.first_name.$error.required && !register.first_name.$pristine" class="help-block">First Name is Mandatory.</span>
+						<span ng-show="register.first_name.$error.minlength" class="help-block">First Name must be of at least 3 character</span>
+						<span ng-show="register.first_name.$error.maxlength" class="help-block">First Name is too long</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Last name will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="last_name" name="last_name" type="text" class="validate" ng-minlength="3" ng-maxlength="25" ng-model="authCtrl.client.lastName" data-length="25" ng-required="true" />
+					<label for="last_name">Last Name</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.last_name.$error.required && !register.last_name.$pristine" class="help-block">Last Name is Mandatory.</span>
+						<span ng-show="register.last_name.$error.minlength" class="help-block">Last Name must be of at least 3 character</span>
+						<span ng-show="register.last_name.$error.maxlength" class="help-block">Last Name is too long</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Password will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="reg_password" name="reg_password" type="password" class="validate" ng-minlength="5" ng-maxlength="10" ng-model="authCtrl.client.password" data-length="10" ng-required="true" />
+					<label for="reg_password">Password</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.reg_password.$error.required && !register.reg_password.$pristine" class="help-block">Password is Mandatory.</span>
+						<span ng-show="register.reg_password.$error.minlength" class="help-block">Password must be of at least 5 character</span>
+						<span ng-show="register.reg_password.$error.maxlength" class="help-block">Password is too long</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Confirm Password will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="confirm_password" name="confirm_password" type="password" class="validate" ng-model="authCtrl.client.confirmPassword" data-length="10" ng-required="true" />
+					<label for="confirm_password">Re-enter Password</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.confirm_password.$error.required && !register.confirm_password.$pristine" class="help-block">Password is Mandatory.</span>
+						<span ng-show="(!register.confirm_password.$error.required) && (authCtrl.client.password !== authCtrl.client.confirmPassword)" class="help-block"> Password do not match</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Email will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="email" name="email" type="email" class="validate" ng-model="authCtrl.client.emailId" data-length="50" ng-required="true" />
+					<label for="email">Email Id</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.email.$error.required && !register.email.$pristine" class="help-block">Email Id is Mandatory.</span>
+						<span ng-show="register.email.$invalid && !register.email.$pristine" class="help-block">Enter a valid Email Id</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Phone number will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="phone" name="phone" type="tel" class="validate" ng-minlength="10" ng-maxlength="10" ng-model="authCtrl.client.phone" data-length="10" ng-required="true" />
+					<label for="phone">Phone Number</label>
+					<div class="invalid-data" ng-show="register.reg_username.$dirty">
+						<span ng-show="register.phone.$error.required && !register.phone.$pristine" class="help-block">Phone Number is Mandatory.</span>
+						<span ng-show="register.phone.$error.minlength" class="help-block">Phone Number must be 10 Number</span>
+						<span ng-show="register.phone.$error.maxlength" class="help-block">Phone Number is too long</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Birth Date will be come here -->
+			<div class="row">
+				<div class="input-field">
+					<input id="birthDate" name="birthDate" type="text" class="datepicker" ng-model="authCtrl.client.birthDate" ng-required="true" />
+					<label for="birthDate">Birthdate</label>
+				</div>
+			</div>
+			
+			
+			<!--Gender will come here-->
+            <div class="row">
+              <div class="input-field">
+                <select name="gender" id="gender" ng-model="authCtrl.client.gender" ng-required="true">
+                  <option value="" disabled selected>Choose a gender</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                </select>
+                <label for="gender">Gender</label>
+              </div>
+            </div>
+			
+			
+			<div class="row">
+              <div class=" col s5">
+                <button type="submit" ng-disabled="register.$invalid"  class="waves-effect waves-ligh btn-large">Submit</button>
+              </div>
+			 <div class="col s7">
+                <small class="center-align">By Registering you agree with our terms and conditions</small>
+				
+              </div>
+            </div>
+			 <p style="font-size: 10px; color: red" ng-hide="register.$invalid">Please note user will be able to login only after admin's approval which generally takes 24 hours.</p>
+			</div>
+		</form>
+		
+	</div>
+	
+</div>
+	
+</div>
+
+
+
+</div>

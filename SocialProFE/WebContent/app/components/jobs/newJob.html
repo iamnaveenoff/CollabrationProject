@@ -1,0 +1,73 @@
+<div style="margin-top: 50px; padding-left: 50px; margin-bottom: 50px;">
+
+<div class="row">
+
+	<div class="col s8 offset-s2">
+		<div class="card hoverable" >
+			<h3 style="padding-left: 20px; padding-top: 20px;">Create Job</h3>
+			
+			<div class="row">
+				<form id="newJob" name="newEvent" ng-submit="jobCtrl.addJob()" class="col s12" style="padding-bottom: 40px;">
+				<hr>
+					<input type="hidden" ng-model="jobCtrl.job.id"/>
+					
+					<!-- Name of the Company -->
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="name" type="text" class="validate" data-length="50" ng-model="jobCtrl.job.companyName">
+							<label for="name">Company Name</label>
+						</div>
+					</div>
+					
+					<!-- Sub Title -->
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="subTitle" type="text" class="validate" data-length="100" ng-model="jobCtrl.job.subTitle">
+							<label for="subTitle">SubTitle</label>
+						</div>
+					</div>
+					
+					<!-- About the Company -->
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="about" class="materialize-textarea" data-length="800" ng-model="jobCtrl.job.about"></textarea>
+							<label for="about">Tell Something About Your Company</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<!-- Job Profile -->
+						<div class="col s6">
+							<div class="input-field col s12">
+								<textarea id="profile" class="materialize-textarea" data-length="500" ng-model="jobCtrl.job.jobProfile"></textarea>
+								<label for="profile">Explain the Job Profile</label>
+							</div>
+						</div>
+						<!-- Qualification -->
+						<div class="col s6">
+							<div class="input-field col s12">
+								<textarea id="qualification" class="materialize-textarea" data-length="500" ng-model="jobCtrl.job.qualification"></textarea>
+								<label for="qualification">Describe Qualification Required for Job</label>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Contact INFO -->
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="contact-info" class="materialize-textarea" data-length="1000" ng-model="jobCtrl.job.contactInfo"></textarea>
+							<label for="contact-info">Contact Information</label>
+						</div>
+					</div>
+					
+					<div class="row">
+						<button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 10px;">Create</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+</div>

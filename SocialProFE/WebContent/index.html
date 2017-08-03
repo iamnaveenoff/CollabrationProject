@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sbkchat">
+<head>
+<meta charset="ISO-8859-1">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!--Let browser know website is optimized for mobile-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Home Page</title>
+
+<!-- Import CSS For bootstrap,materialize custom CSS  -->
+
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"/>
+
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.css"/> -->
+
+<link rel="stylesheet" type="text/css" href="assets/css/materialize.css"/>
+
+<script type="text/javascript" src="https://use.fontawesome.com/9dea30e34b.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/material-icon.css"/>
+
+<link rel="stylesheet" type="text/css" href="assets/css/Merriweather.css"/>
+
+<link rel="stylesheet" type="text/css" href="assets/css/textAngular.css"/>
+
+<!-- Custom CSS file -->
+
+<link rel="stylesheet" type="text/css" href="assets/css/app.css"/>
+
+
+<script type="text/javascript" src="assets/js/jquery.js" ></script>
+
+<script type="text/javascript" src="assets/js/materialize.js" ></script>
+
+<script type="text/javascript" src="assets/js/lodash.js" ></script>
+
+
+<script type="text/javascript" src="assets/js/sockjs.js" ></script>
+
+<script type="text/javascript" src="assets/js/stomp.js" ></script>
+
+
+<!-- Import JS File for Module and Route -->
+
+<script type="text/javascript" src="assets/js/angular.js" ></script>
+
+<script type="text/javascript" src="assets/js/angular-cookies.js" ></script>
+
+<script type="text/javascript" src="assets/js/angular-route.js" ></script>
+
+
+<script type="text/javascript" src="assets/js/textAngular-rangy.min.js" ></script>
+
+<script type="text/javascript" src="assets/js/textAngular-sanitize.js" ></script>
+
+<script type="text/javascript" src="assets/js/textAngular.js" ></script>
+
+<script type="text/javascript" src="assets/js/textAngularSetup.js" ></script>
+
+
+
+<!-- Custom JS file -->
+<script type="text/javascript" src="app/app.module.js"></script>
+<script type="text/javascript" src="app/app.route.js"></script>
+
+
+
+<!-- For Authentication module -->
+<script type="text/javascript" src="app/components/authentication/authenticationFactory.js"></script>
+<script type="text/javascript" src="app/components/authentication/authenticationController.js"></script>
+
+<!-- For User module -->
+<script type="text/javascript" src="app/components/user/userFactory.js"></script>
+<script type="text/javascript" src="app/components/user/userController.js"></script>
+
+<!-- For Blog module -->
+<script type="text/javascript" src="app/components/blogs/blogFactory.js"></script>
+<script type="text/javascript" src="app/components/blogs/blogController.js"></script>
+
+<!-- For Blog Comment module -->
+<script type="text/javascript" src="app/components/blogs/blogCommentFactory.js"></script>
+<script type="text/javascript" src="app/components/blogs/blogCommentController.js"></script>
+
+<!-- For Forum module -->
+<script type="text/javascript" src="app/components/forum/forumFactory.js"></script>
+<script type="text/javascript" src="app/components/forum/forumController.js"></script>
+
+<!-- For Event module -->
+<script type="text/javascript" src="app/components/events/eventFactory.js"></script>
+<script type="text/javascript" src="app/components/events/eventController.js"></script>
+
+
+<!-- For Job module -->
+<script type="text/javascript" src="app/components/jobs/jobFactory.js"></script>
+<script type="text/javascript" src="app/components/jobs/jobController.js"></script>
+
+
+<!-- For Admin module -->
+<script type="text/javascript" src="app/components/admin/adminFactory.js"></script>
+<script type="text/javascript" src="app/components/admin/adminController.js"></script>
+
+
+<!-- For Handling Request of of users, blogs, forums, jobs and events -->
+<script type="text/javascript" src="app/components/requests/requestFactory.js"></script>
+<script type="text/javascript" src="app/components/requests/requestController.js"></script>
+
+
+<!-- For Friend module -->
+<script type="text/javascript" src="app/components/friends/friendFactory.js"></script>
+<script type="text/javascript" src="app/components/friends/friendController.js"></script>
+
+
+<!-- For Chat module -->
+<script type="text/javascript" src="app/components/chat/chatFactory.js"></script>
+<script type="text/javascript" src="app/components/chat/chatController.js"></script>
+
+
+
+<script type="text/javascript" src="assets/js/custom.js" ></script>
+</head>
+
+
+<body ng-cloak class="ng-cloak">
+
+<!-- Add Header file -->
+
+<header>
+	 <div ng-include="'app/shared/navbar.html'"></div>
+	<!-- <div ng-include="'app/shared/quicklinks.html'"></div> -->
+</header>
+
+<!-- Add Main Contain and injecting views -->
+
+<main>
+	<div id="main">
+		
+		<!-- angular template loading -->
+		<!-- In this content will be Injected -->
+		
+		<div ng-view>
+		
+		<!-- In this all the html page loaded or page content will be injected here -->
+		
+		</div>
+		
+	</div>
+</main>
+
+<!-- Add Footer File -->
+
+<footer>
+	<div ng-include="'app/shared/footer.html'"></div>
+</footer>
+
+</body>
+
+
+</html>

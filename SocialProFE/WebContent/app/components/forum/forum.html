@@ -1,0 +1,147 @@
+<div class="row" ng-init="forCtrl.viewForum()">
+	
+	<div class="col m9" style="margin-bottom: 200px;">
+		
+		<div class="col s12" style="margin-top: 25px;">
+			<a href="#!/user" class="breadcrumb">Home</a>
+			<a href="#!/forum/list" class="breadcrumb">Forum List</a>
+			<a href="#!/forum/topic" class="breadcrumb">Forum</a>
+		</div>
+		
+		<div class="card hoverable" style="margin-top: 75px;">
+			<div style="padding-top: 40px; padding-bottom: 40px;">
+				<div class="row">
+				
+					<div class="col m3" style="margin-top: 20px;">
+						<img alt="ForumUserImage" src="assets/images/{{forCtrl.singleForumUser.profile}}" class="circle" width="150px;">
+						<p>Started By: {{forCtrl.singleForum.userName}}</p>
+					</div>
+					
+					<div class="col m9">
+					
+						<div class="row">
+							<div class="col m8">
+								<h4>{{forCtrl.singleForum.name}}</h4>
+							</div>
+							<div class="col m4" ng-if="((user.id != forCtrl.singleForum.userId) && !forCtrl.isParticipant)">
+								<a class="waves-effect waves-light btn" ng-click="forCtrl.joinRequest()">
+								<i class="material-icons">add</i>JOIN FORUM</a>
+							</div>
+						</div>
+						<p>Posted on: {{forCtrl.singleForum.createDate | date : 'MMMM d, y'}}</p>
+						<p>{{forCtrl.singleForum.description}}</p>
+						<a ng-if="forCtrl.isParticipant && forCtrl.isApproved" class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-target="leaveAPost" 
+										data-position="bottom" data-delay="50" data-tooltip="Reply to This Thread"><i class="material-icons">reply</i></a>
+						
+							<!-- Modal Structure for Submitting the Forum Post -->
+							
+							<div id="leaveAPost" class="modal">
+								<div class="modal-content">
+									<h4>Leave Post</h4>
+									
+									<form id="newForumPost" name="newForumPost" ng-submit="forCtrl.addForumPost()"  style="margin-bottom: 50px;">
+										
+										<!-- ForumPost Id Hiden -->
+										<input type="hidden" ng-model="forCtrl.ForumPost.id" />
+										
+										<!--ForumPost Title  -->
+										<div class="row">
+											<div class="input-field col s12"> 
+												<input id="title" type="text" class="validate" ng-model="forCtrl.ForumPost.title">
+          										<label for="title">Title</label>
+											</div> 
+										</div>
+										
+										<!-- ForumPost Description -->
+										<div class="row">
+											<div class="input-field col s12"> 
+												<textarea id="comment" type="text" class="materialize-textarea" ng-model="forCtrl.ForumPost.description"></textarea>
+          										<label for="comment">Comment</label>
+											</div> 
+										</div>
+										
+										<!-- ForumPost Button for Post-->
+										<div class="row">
+											<button type="submit" class="waves-effect waves-light btn-large" style="margin-top: 10px; left: 20px;">Post</button>
+										</div>
+										
+									</form>
+								</div>
+							</div>					
+												
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		<!-- If no Post Are Available -->
+		
+		<div ng-if="((forCtrl.singleForum.noOfPosts == 0) && forCtrl.isApproved)">
+			<div class="card hoverable" style="height: 200px;">
+				<h3 style="padding-top: 75px; padding-left: 250px;">No Posts Yet!</h3>
+			</div>
+		</div>
+		
+		<!-- If User is Not Participated  -->
+		
+		<div ng-if="((user.id != forCtrl.singleForum.userId) && !forCtrl.isParticipant)">
+			<div class="card hoverable" style="background-color: #ff0000;">
+				<marquee>
+					<span style="color: #fff; padding-left: 25px;">You are not participant of this thread. Join the forum to post and to view posts of others.</span>
+				</marquee>	
+			</div>
+		</div>
+		
+		
+		<!-- If User Is Participant And Status is PENDING -->
+		
+		<div ng-if="(forCtrl.isParticipant) && forCtrl.participantStatus == 'PENDING'">
+			<div class="card hoverable" style="background-color: #ff0000;">
+				<marquee>
+					<span style="color: #fff; padding-left: 25px;">
+						Your request to join the Forum submitted successfully and waiting response from admin after approval which will get full access to the Forum.
+					</span>
+				</marquee>
+			</div>
+		</div>
+		
+		<!-- If ForumPost are Available -->
+		
+		<div ng-if="(forCtrl.isApproved) && forCtrl.singleForum.noOfPosts != 0">
+		
+			<div class="card hoverable" ng-repeat="post in forCtrl.forumPostsList | orderBy : 'id'">
+				<div style="padding-top: 40px; padding-bottom: 40px;">
+					<div class="row">
+					
+						<div class="col s3" style="margin-top: 20px;">
+							<img alt="" src="assets/images/{{post.userProfileId}}" class="circle" width="150px;">
+							<p>Posted by: {{post.userName}}</p>
+						</div>
+						
+						<div class="col m9">
+							<h4>{{post.title}}</h4>
+							<p>{{post.postDate | date : 'MMMM d, y'}}</p>
+							<p>{{post.description}}</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	
+	<div class="col m3"> 
+		<div ng-include="'app/shared/rightSide.html'"></div>
+		
+		<div style="margin-top: 25px auto 0 auto;" ng-if="user.role != 'User' && user.role != 'Employer' ">
+ 			<button data-target="category" class="waves-effect waves-light btn-large"><i class="material-icons">question_answer</i>CREATE FORUM</button>
+ 		</div>
+	</div>
+	
+</div>

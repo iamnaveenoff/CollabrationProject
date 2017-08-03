@@ -1,0 +1,66 @@
+<div class="row" ng-init="adminCtrl.fetchForumList()">
+	
+	<div style="margin-top: 25px; margin-left: 25px;">
+		<h4 align="center">Manage Forum Topics Here</h4>
+	</div>
+	
+	<br/><hr/>
+	
+	<div style="margin-left: 25px; margin-bottom: 75px;">
+			
+			<table class="highlight centered striped bordered responsive-table">
+				
+				<thead>
+					<tr>
+						<!-- <th data-field="id">Topic Name</th>
+						<th data-field="id">Topic Category</th>
+						<th data-field="name">Initiated By</th>
+						<th data-field="date">Initiated On</th>
+						<th data-field="status">Options</th> -->
+						
+						<th data-field="id">Forum Id</th>
+						<th data-field="id">Forum Name</th>
+						<th data-field="name">Initiated By</th>
+						<th data-field="date">Initiated On</th>
+						<th data-field="status">Options</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr ng-repeat="forum in adminCtrl.forumsList">
+						<td>{{forum.id}}</td>
+						<td><a href="#!/forum/{{forum.id}}" target="_blank">{{forum.name}}</a></td>
+						<td>{{forum.userName}}</td>
+						<td>{{forum.createDate}}</td>
+						<td>
+							<a class="waves-effect waves-light btn tooltipped green" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons">mode_edit</i></a>
+							<a class="waves-effect waves-light btn tooltipped red" data-position="bottom" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+						</td>	
+					</tr>
+					<!-- <tr>
+						<td>Topic Name</td>
+						<td>Beginners</td>
+						<td>Bhayyasaheb</td>
+						<td>June 7, 2017</td>
+						<td>
+							<a class="waves-effect waves-light btn tooltipped green" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons">mode_edit</i></a>
+							<a class="waves-effect waves-light btn tooltipped red" data-position="bottom" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+						</td>	
+					</tr>
+					<tr>
+						<td>Topic Name</td>
+						<td>Beginners</td>
+						<td>Bhayyasaheb</td>
+						<td>June 7, 2017</td>
+						<td>
+							<a class="waves-effect waves-light btn tooltipped green" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons">mode_edit</i></a>
+							<a class="waves-effect waves-light btn tooltipped red" data-position="bottom" data-delay="50" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+						</td>	
+					</tr> -->
+				</tbody>
+				
+			</table>
+			
+	</div>
+	
+</div>
